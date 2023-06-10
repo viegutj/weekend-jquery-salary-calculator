@@ -1,0 +1,74 @@
+/* Body Styling */
+
+body {
+    background-color: lightgray;
+    font-family: sans-serif;
+    color: black;
+}
+
+/* Flexbox */
+html, body {
+    /*min-height brings the main content down from the
+    top of the page*/
+    min-height: 100vh;
+    margin: auto;
+}
+body {
+    display: flex;
+    /* flex-direction makes everything line up 
+    as disired in columns on the page.*/
+    flex-direction: column;
+}
+header {
+    background-color: grey;
+    text-align: center;
+    text-align: center;
+}
+main {
+    flex: auto;
+    margin: auto;
+}
+
+/* Header/Footer */
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    color: whitesmoke
+}
+
+footer {
+    display: flex;
+    justify-content: right;
+    align-items: right;
+}
+
+/* Form Elements */
+input {
+    padding: 1em;
+}
+button {
+    padding: 1em;
+}
+
+/* Table Elements */
+table {
+    width: 100%;
+    text-align: center;
+    text-align: center;
+}
+table, ht, td {
+    border: 3px solid black;
+    height: 2em;
+    padding: 1em;
+}
+
+tbody tr:nth-child(odd){
+    background: lightslategrey
+}
+tbody tr:nth-child(even){
+    background: white
+}
+
+

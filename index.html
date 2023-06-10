@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="stylesheet.css">
+  <script src="jquery.js"></script>
+  <script src="script.js"></script>
+  <title>Viegut's jQuery Salary Calculator</title>
+</head>
+
+<body>
+  <header>
+    <h1>jQuery Salary App</h1>
+  </header>
+
+  <main>
+    <section>
+      <h2>Add Employee:</h2>
+      <form>
+        <input
+          placeholder="First Name"
+          type="text"
+          id="first-name-input">
+        <input
+          placeholder="Last Name"
+          type="text"
+          id="last-name-input">
+        <input
+          placeholder="ID"
+          type="number"
+          id="id-input">
+        <input
+          placeholder="Title"
+          type="text"
+          id="title-input">
+        <input
+          placeholder="Annual Salary"
+          type="number"
+          id="annual-salary-input">
+        <button id="submit-button">Submit</button>
+      </form>
+    </section>
+    
+    <section>
+      <h2>Employees</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Annual Salary</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="table-input">
+          <!-- This is where new lines for the table need to go! -->
+        </tbody>
+      </table>
+    </section>
+    <footer>
+        <h2>Monthly Total: <span id="monthlyTotal"></span></h2>
+    </footer>
+  </main>
+</body>
+</html>
