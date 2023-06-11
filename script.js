@@ -108,7 +108,7 @@ console.log('All objects in employeeArray', employeeArray);
 
 // Take the salaryInputVal and add it to our monthlyTotal
 // Global variable of monthlyTotal will store total after each user action.
-monthlyTotal += annualSalaryInputVal; 
+monthlyTotal += annualSalaryInputVal/12; 
 
 console.log('monthlyTotal:', monthlyTotal);
 
@@ -121,6 +121,8 @@ $('#monthly-total').text('').append(monthlyTotal);
 if (monthlyTotal > 20000) {
     $('#monthly-total').css('background-color', 'red');
     console.log('we are inTheRed');
+} else {
+    $('#monthly-total').css('background-color', 'lightgray')
 }
 
 // Resetting all of our table inputs (<td>) to empty values.
@@ -156,13 +158,20 @@ function handleDeleteButton() {
     // grab our row in the table, access the closest <tr>, store as variable
     // update annual salary input val to be 
     console.log('Salary value to be removed from monthlyTotal:', Number($(this).closest('tr').find('td:nth-child(5)').text()));
-    removeSalary = (Number($(this).closest('tr').find('td:nth-child(5)').text()));
-    monthlyTotal -= removeSalary
+    specificAnnualSalary = (Number($(this).closest('tr').find('td:nth-child(5)').text()));
+    monthlyTotal -= specificAnnualSalary/12
     // Re-clear the text and replace with a string of the monthlyTotal.
     $('#monthly-total').text('').append(monthlyTotal);
 
     // let $row = $(this).closest('tr')
     // annualSalaryInputVal = parseFloat($row.find("td:nth-child(5)").text(), 10)
+
+    if (monthlyTotal > 20000) {
+        $('#monthly-total').css('background-color', 'red');
+        console.log('we are inTheRed');
+    } else {
+        $('#monthly-total').css('background-color', 'lightgray')
+    }
 
     // console.log($(this).parent().siblings().data());
     // hey jQuery, access "this", and delete its parent's parent
