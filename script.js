@@ -49,6 +49,10 @@ let submitCounter = 0
 let employeeArray = []
 let monthlyTotal = 0
 let annualSalaryInputVal = 0
+let USDollar = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+});
 
 //Event Handlers
 function handleSubmitButton(event) {
@@ -61,19 +65,21 @@ function handleSubmitButton(event) {
 // console.log is written for each grab to test.
     // grab input value for First Name
     let firstNameInputVal = $('#first-name-input').val()
-    console.log('first name input is:', firstNameInputVal)
+    // console.log('first name input is:', firstNameInputVal)
     // grab input value for Last Name
     let lastNameInputVal = $('#last-name-input').val()
-    console.log('last name input is:', lastNameInputVal)
+    // console.log('last name input is:', lastNameInputVal)
     // grab input value for id
+    // use parseInt to convert to number
     let idInputVal = parseInt($('#id-input').val(), 10)
-    console.log('id input is:', idInputVal)
+    // console.log('id input is:', idInputVal)
     // grab input value for title
     let titleInputVal = $('#title-input').val()
-    console.log('title input is:', titleInputVal)
+    // console.log('title input is:', titleInputVal)
     // grab input value for annual salary
+    // use parseInt to convert to number
     let annualSalaryInputVal = parseInt($('#annual-salary-input').val(), 10)
-    console.log('annual salary input is:', annualSalaryInputVal)
+    // console.log('annual salary input is:', annualSalaryInputVal)
 
 // We need to store these variables for later. How can we organize these?
 // We can organize these as objects with multiple properties.
@@ -108,12 +114,16 @@ console.log('All objects in employeeArray', employeeArray);
 
 // Take the salaryInputVal and add it to our monthlyTotal
 // Global variable of monthlyTotal will store total after each user action.
-monthlyTotal += annualSalaryInputVal/12; 
+monthlySalary = annualSalaryInputVal/12
+
+console.log(`The formated version of ${monthlySalary} is ${USDollar.format(monthlySalary)}`);
+monthlyTotal += monthlySalary; 
+monthlyTotal = Number(monthlyTotal.toFixed(2))
 
 console.log('monthlyTotal:', monthlyTotal);
 
 // Clear the text and replace with a string of the monthlyTotal.
-$('#monthly-total').text('').append(monthlyTotal);
+$('#monthly-total').text('$').append(monthlyTotal);
 
 // If the total monthly cost exceeds $20,000, 
 // add a red background color to the total monthly cost.
@@ -157,11 +167,14 @@ function handleDeleteButton() {
     // Pseudo-Code
     // grab our row in the table, access the closest <tr>, store as variable
     // update annual salary input val to be 
-    console.log('Salary value to be removed from monthlyTotal:', Number($(this).closest('tr').find('td:nth-child(5)').text()));
+    console.log('Annual salary value of removed:', Number($(this).closest('tr').find('td:nth-child(5)').text()));
     specificAnnualSalary = (Number($(this).closest('tr').find('td:nth-child(5)').text()));
-    monthlyTotal -= specificAnnualSalary/12
+    specificMonthlySalary = specificAnnualSalary/12
+    console.log('Monthly salary value of removed:', specificMonthlySalary);
+    monthlyTotal -= specificMonthlySalary
+    monthlyTotal = Number(monthlyTotal.toFixed(2))
     // Re-clear the text and replace with a string of the monthlyTotal.
-    $('#monthly-total').text('').append(monthlyTotal);
+    $('#monthly-total').text('$').append(monthlyTotal);
 
     // let $row = $(this).closest('tr')
     // annualSalaryInputVal = parseFloat($row.find("td:nth-child(5)").text(), 10)
@@ -172,7 +185,6 @@ function handleDeleteButton() {
     } else {
         $('#monthly-total').css('background-color', 'lightgray')
     }
-
     // console.log($(this).parent().siblings().data());
     // hey jQuery, access "this", and delete its parent's parent
     // (i.e. delete the whole row)
