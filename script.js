@@ -1,5 +1,8 @@
 // Assignment Instructions
-/* The application should have an input form that collects 
+
+// Base Mode Instructions
+/* 
+The application should have an input form that collects 
 _employee first name, last name, ID number, job title, annual salary_.
 
 A 'Submit' button should collect the form information, 
@@ -11,8 +14,22 @@ add a red background color to the total monthly cost.
 
 Create a delete button that removes an employee from the DOM. 
 For Base mode, it does **not** need to remove that Employee's 
-salary from the reported total. */
+salary from the reported total. 
+*/
 // End of Base Mode Instructions
+
+// Stretch Goals
+/*
+Add styling or extra functionality that fits with the 
+theme of this assignment.
+Once the employee is deleted, update the 
+_Total Monthly Cost_ section on the page to reflect the employee's 
+removal. _HINT:_ You will need to figure out which employee 
+was removed, in order to subtract their salary from the total. 
+Consider using `.text()` as a getter, or look into jQuery's `
+.data()` function. This is tricky!
+*/
+// End of Stretch Goals
 
 console.log('Hello js!');
 
@@ -81,7 +98,7 @@ console.log('All objects in employeeArray', employeeArray);
             <td>${lastNameInputVal}</td>
             <td>${idInputVal}</td>
             <td>${titleInputVal}</td>
-            <td>${annualSalaryInputVal}</td>
+            <td data-id="${submitCounter}">${annualSalaryInputVal}</td>
             <td><button class="delete-button">Delete</button></td> 
         </tr>
     `);
@@ -120,7 +137,35 @@ salary from the reported total. */
 // Event handler for delete button
 function handleDeleteButton() {
     console.log('deleteButton has been clicked!');
-    // hey jQuery, access "this", and delete its parent
-    $(this).parent().parent().remove()
-    // remove the 
+
+    // Add styling or extra functionality that fits with the 
+    // theme of this assignment.
+
+    // Once the employee is deleted, update the 
+    // _Total Monthly Cost_ section on the page to reflect the employee's 
+    // removal. _HINT:_ You will need to figure out which employee 
+    // was removed, in order to subtract their salary from the total. 
+    // Consider using `.text()` as a getter, or look into jQuery's `
+    // .data()` function. This is tricky! 
+    
+
+    // remove the clicked annual salary amount from the clicked
+    // row from the monthly total variable.
+
+    // Pseudo-Code
+    // grab our row in the table, access the closest <tr>, store as variable
+    // update annual salary input val to be 
+    console.log('Salary value to be removed from monthlyTotal:', Number($(this).closest('tr').find('td:nth-child(5)').text()));
+    removeSalary = (Number($(this).closest('tr').find('td:nth-child(5)').text()));
+    monthlyTotal -= removeSalary
+    // Re-clear the text and replace with a string of the monthlyTotal.
+    $('#monthly-total').text('').append(monthlyTotal);
+
+    // let $row = $(this).closest('tr')
+    // annualSalaryInputVal = parseFloat($row.find("td:nth-child(5)").text(), 10)
+
+    // console.log($(this).parent().siblings().data());
+    // hey jQuery, access "this", and delete its parent's parent
+    // (i.e. delete the whole row)
+    $(this).parent().parent().remove();
 }
