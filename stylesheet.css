@@ -73,6 +73,9 @@ tbody tr:nth-child(even){
     background: lightgray
 }
 
+.inTheRed {
+    background-color: red;
+}
 
 
 

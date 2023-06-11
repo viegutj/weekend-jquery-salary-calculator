@@ -98,6 +98,14 @@ console.log('monthlyTotal:', monthlyTotal);
 // Clear the text and replace with a string of the monthlyTotal.
 $('#monthly-total').text('').append(monthlyTotal);
 
+// If the total monthly cost exceeds $20,000, 
+// add a red background color to the total monthly cost.
+
+if (monthlyTotal > 20000) {
+    $('#monthly-total').css('background-color', 'red');
+    console.log('we are inTheRed');
+}
+
 // Resetting all of our table inputs (<td>) to empty values.
         $('#first-name-input').val('')
         $('#last-name-input').val('')
@@ -114,5 +122,5 @@ function handleDeleteButton() {
     console.log('deleteButton has been clicked!');
     // hey jQuery, access "this", and delete its parent
     $(this).parent().parent().remove()
-    // monthlyTotal -= 
+    // remove the 
 }
