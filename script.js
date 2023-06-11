@@ -122,8 +122,13 @@ monthlyTotal = Number(monthlyTotal.toFixed(2))
 
 console.log('monthlyTotal:', monthlyTotal);
 
-// Clear the text and replace with a string of the monthlyTotal.
-$('#monthly-total').text('$').append(monthlyTotal);
+
+console.log(`The formated version of ${monthlyTotal} is ${USDollar.format(monthlyTotal)}`);
+let formattedMonthlyTotal = USDollar.format(monthlyTotal)
+
+
+// Re-clear the text and replace with a string of the monthlyTotal.
+$('#monthly-total').text('').append(formattedMonthlyTotal);
 
 // If the total monthly cost exceeds $20,000, 
 // add a red background color to the total monthly cost.
@@ -173,11 +178,15 @@ function handleDeleteButton() {
     console.log('Monthly salary value of removed:', specificMonthlySalary);
     monthlyTotal -= specificMonthlySalary
     monthlyTotal = Number(monthlyTotal.toFixed(2))
-    // Re-clear the text and replace with a string of the monthlyTotal.
-    $('#monthly-total').text('$').append(monthlyTotal);
 
-    // let $row = $(this).closest('tr')
-    // annualSalaryInputVal = parseFloat($row.find("td:nth-child(5)").text(), 10)
+    // create a new variable to store formatted monthly salary
+    // WITHOUT mutating monthly salary variable
+    console.log(`The formated version of ${monthlyTotal} is ${USDollar.format(monthlyTotal)}`);
+    let formattedMonthlyTotal = USDollar.format(monthlyTotal)
+
+
+    // Re-clear the text and replace with a string of the monthlyTotal.
+    $('#monthly-total').text('').append(formattedMonthlyTotal);
 
     if (monthlyTotal > 20000) {
         $('#monthly-total').css('background-color', 'red');
@@ -185,7 +194,7 @@ function handleDeleteButton() {
     } else {
         $('#monthly-total').css('background-color', 'lightgray')
     }
-    // console.log($(this).parent().siblings().data());
+
     // hey jQuery, access "this", and delete its parent's parent
     // (i.e. delete the whole row)
     $(this).parent().parent().remove();
