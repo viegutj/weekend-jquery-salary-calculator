@@ -95,7 +95,7 @@ employeeArray.push(objectEmployee);
 console.log('All objects in employeeArray', employeeArray);
 
 
-// Here we are appending data into our table.
+// We are appending data into our table.
 // "Hey jQuery, access id table-input and append these
 // variables, as well as a delete button"
     $('#table-input').append(`
@@ -118,7 +118,7 @@ monthlySalary = annualSalaryInputVal/12
 
 console.log(`The formated version of ${monthlySalary} is ${USDollar.format(monthlySalary)}`);
 monthlyTotal += monthlySalary; 
-monthlyTotal = Number(monthlyTotal.toFixed(2))
+// monthlyTotal = Number(monthlyTotal.toFixed(2))
 
 console.log('monthlyTotal:', monthlyTotal);
 
@@ -177,7 +177,7 @@ function handleDeleteButton() {
     specificMonthlySalary = specificAnnualSalary/12
     console.log('Monthly salary value of removed:', specificMonthlySalary);
     monthlyTotal -= specificMonthlySalary
-    monthlyTotal = Number(monthlyTotal.toFixed(2))
+    // monthlyTotal = Number(monthlyTotal.toFixed(2))
 
     // create a new variable to store formatted monthly salary
     // WITHOUT mutating monthly salary variable
